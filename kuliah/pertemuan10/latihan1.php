@@ -1,4 +1,5 @@
 <?php
+require 'function.php';
 $conn = mysqli_connect('localhost', 'root', '', 'pw_043040023');
 
 
