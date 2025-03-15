@@ -7,10 +7,6 @@ function query($query)
     $result = mysqli_query($conn, $query);
     $rows = [];
 
-    if (mysqli_num_rows($result)) {
-        return mysqli_fetch_assoc($result);
-    }
-
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
     }
@@ -18,7 +14,59 @@ function query($query)
 
 }
 
+function tambah($data)
+{
+    global $conn;
+    $nama = htmlspecialchars($data["nama"]);
+    $nrp = htmlspecialchars($data["nrp"]);
+    $email = htmlspecialchars($data["email"]);
+    $jurusan = htmlspecialchars($data["jurusan"]);
+    $gambar = htmlspecialchars($data["gambar"]);
+
+    $sql = "INSERT INTO mahasiswa (nama, nrp, email, jurusan, gambar)
+                                VALUES
+                                ('$nama','$nrp','$email','$jurusan','$gambar')";
+    $query = mysqli_query($conn, $sql);
+
+    return mysqli_affected_rows($conn);
+
+
+}
+
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!doctype html>
 <html lang="en">
@@ -32,13 +80,19 @@ function query($query)
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+
+    <style>
+        a.nav-link {
+            color: white !important;
+        }
+    </style>
+
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #323539;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#" style="color: white;">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

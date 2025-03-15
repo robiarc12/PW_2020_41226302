@@ -5,7 +5,7 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
 
 
 
-
+// var_dump($mahasiswa);
 ?>
 
 
@@ -20,12 +20,21 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Halaman Utama</title>
+    <style>
+        .table:hover {
+            cursor: pointer;
+        }
+
+        .btn {
+            margin: 20px 10px !important;
+        }
+    </style>
 </head>
 
 <body>
-    <h3>Daftar Mahasiswa</h3>
-    <table border="1" cellpadding="10" cellspacing="0">
+    <h3 style="font-style: italic;">Daftar Mahasiswa</h3>
+    <table class="table table-striped table-hover">
         <tr>
             <th>#</th>
             <th>Gambar</th>
@@ -40,12 +49,17 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
                 <td><?= $i++ ?></td>
                 <td><img src="img/<?= $mhs['gambar'] ?>" alt="" srcset="" width="100"></td>
                 <td><?= $mhs['nama'] ?></td>
-                <td><a href="detail.php?id=<?= $mhs['id'] ?>">lihat detail</a>
+                <td><a href="detail.php?id=<?= $mhs['id'] ?>">Lihat Detail</a>
             </tr>
         <?php endforeach; ?>
 
 
     </table>
+
+    <button type="button" class="btn btn-primary"><a href="tambah.php"
+            style="color: white; padding: 20px; text-decoration: none;">Tambah Data
+            Mahasiswa</a></button>
+
 </body>
 
 </html>
